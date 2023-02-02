@@ -1,4 +1,13 @@
 2-2-23
 class 2
 
-testing
+feature branch workflow:
+1] use new branch for new feature
+2] git pull -p (from main branch to make sure it is up-to-date)
+3] git checkout -b new-branch
+4] git push -u origin new-branch (after making changes)
+-- now delete the new-branch
+5] git checkout main
+6] git pull -p
+7] git branch -d new-branch
+8] git branch
