@@ -1,0 +1,12 @@
+1/26/2023
+class 1
+
+-syllabus
+https://github.com/mtlynch3/CSCI39548
+
+-understanding Git and SSH Keys
+https://docs.google.com/document/d/1IiKHX0lIk7n_AlNIttbD1d1ICukPVodbYmWj0IaCSPE/edit
+
+-about SSH keys
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
+
