@@ -1,0 +1,11 @@
+body{
+    background-color: darkcyan;
+}
+.header{
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    /* align-items: center; */
+    text-align: center;
+    /* justify-content: center; */
+}
