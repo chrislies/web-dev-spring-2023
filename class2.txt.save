@@ -14,7 +14,3 @@ feature branch workflow:
 7] git pull -p (to update your local repo so that it is the same as your remote)
 8] git branch -d new-branch
 9] git branch
--------------------------------------------
-hw1
-- one index (home) page
-- another page that links to the index page
