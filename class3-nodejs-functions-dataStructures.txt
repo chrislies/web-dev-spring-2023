@@ -1,0 +1,29 @@
+2-9-23 class3
+
+- node.js: to run javascript outside of the browser
+
+- javascript 
+- 'let' and 'const' used to declare variables
+	- ex: let x = 10; 
+	- ex: const y = 20;  //const can only be declared once (ex. y = 19; would produce a type error)
+- variables declared inside functions are local to that function block only (not global)
+- variables declared outside of functions are in the global scope
+- function declaration
+[x] simpler method:
+	function square(x) {
+		return x * x;
+	}
+[x] arrow method: (takes up less lines of code)
+	const square = (x) => { return x * x; };
+	or
+	const sqaure2 = x => x * x;
+- use triple equals === in place of two equals ==
+== is the equality operator. It tests if two values are equal, after converting both values to a common type if needed. For example: 5 == "5" is true because both values are equal when converted to the same type (i.e., the number 5 and the string "5").
+
+=== is the strict equality operator. It tests if two values are equal, without converting both values to a common type. For example: 5 === "5" is false because the values are not equal without type conversion (i.e., the number 5 is not equal to the string "5").
+---------------------------------------------------------
+to use nodejs
+[] nano example.js	// create a js file
+[] node example.js	// run the js file
+
+
