@@ -40,7 +40,7 @@ console.log("left" in anObject);
 console.log("right" in anObject);
 // → true
 ---------------------------------------------------------
-[x] find out what an object has
+[x] find out what properties an object has
 console.log(Object.keys({x: 0, y: 0, z: 2}));
 // → ["x", "y", "z"]
 ---------------------------------------------------------
