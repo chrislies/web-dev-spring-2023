@@ -21,3 +21,20 @@ console.log(max(...numbers));
 let words = ["never", "fully"];
 console.log(["will", ...words, "understand"]);
 // → ["will", "never", "fully", "understand"]
+--------------------------------------------------------------------
+
+DOM (Document Object Model): represents an HTML document as a tree of documents
+	-allows for manipulation of webpages 
+
+-As an object-oriented representation of the web page, it can be modified with a scripting language such as JavaScript.
+	-For example, the DOM specifies that the querySelectorAll method in this code snippet must return a list of all the <p> elements in the document:
+
+const paragraphs = document.querySelectorAll("p");
+// paragraphs[0] is the first <p> element
+// paragraphs[1] is the second <p> element, etc.
+alert(paragraphs[0].nodeName);
+--------------------------------------------------------------------
+-The DOM is not part of the JavaScript language, but is instead a Web API used to build websites.
+-You don't have to do anything special to begin using the DOM. You use the API directly in JavaScript from within what is called a script, a program run by a browser.
+
+
