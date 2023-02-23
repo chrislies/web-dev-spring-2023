@@ -1,0 +1,105 @@
+2-23-23
+class 5
+
+[x] Arrow Functions
+
+// traditional function
+function add(x, y) {
+  return x + y;
+}
+
+// arrow function equivalent
+const add = (x, y) => x + y;
+------------------------------------------------------------------
+[x] higher-order functions:
+- Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions
+- These are PURE functions that do not modify the original array
+
+ex)
+	-repeat() is a higher-order function 
+
+	function repeat(n, action) {
+	  for (let i = 0; i < n; i++) {
+	    action(i);
+	  }
+	}
+	repeat(3, console.log);
+	// → 0
+	// → 1
+	// → 2
+
+	let labels = [];
+	repeat(5, i => {
+	  labels.push(`Unit ${i + 1}`);
+	});
+	console.log(labels);
+	// → ["Unit 1", "Unit 2", "Unit 3", "Unit 4", "Unit 5"]
+
+ex)
+	-greaterThan() is a higher-order function
+
+	function greaterThan(n) {
+	  return m => m > n;	//returns a function (Arrow function)
+	}
+	//same function w/o arrow implementation
+	function greaterThan(n) {
+	  let func = function(m) {
+		return m>n;
+	  }
+	  return func;
+	}
+	let greaterThan10 = greaterThan(10);
+	console.log(greaterThan10(11));
+	// → true
+------------------------------------------------------------------
+[x] Filtering Arrays
+ex) 
+	const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+	const result = words.filter(word => word.length > 6);
+
+	console.log(result);
+	// Expected output: Array ["exuberant", "destruction", "present"]
+
+//detailed view of filtering arrays: 
+	function filter(array, test) {
+	  let passed = [];
+	  for (let element of array) {
+	    if (test(element)) {
+	      passed.push(element);
+	    }
+	  }
+	  return passed;
+	}
+
+	const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+	console.log(filter(words, word => word.length > 6));
+------------------------------------------------------------------
+[x] Transforming with map
+- Array.prototype.map()
+- map() method creates a new array populated with the results of calling a provided function on every element in the calling array
+
+ex)
+	const array1 = [1, 4, 9, 16];
+
+	// Pass a function to map
+	const map1 = array1.map(x => x * 2);
+
+	console.log(map1);
+	// Expected output: Array [2, 8, 18, 32]
+------------------------------------------------------------------
+[x] reduce()
+ex)
+	function reduce(array, combine, start) {
+	  let current = start;
+	  for (let element of array) {
+	  	//(a,b) => a+b
+	  	//(1,2) => 1+2=3
+	    current = combine(current, element);
+	  }
+	  return current;
+	}
+
+	console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));
+	// → 10
