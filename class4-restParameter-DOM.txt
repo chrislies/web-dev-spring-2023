@@ -54,4 +54,3 @@ the following function creates a new <h1> element, adds text to that element, an
   </head>
   <body></body>
 </html>
---------------------------------------------------------------------
