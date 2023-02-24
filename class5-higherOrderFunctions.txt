@@ -103,3 +103,11 @@ ex)
 
 	console.log(reduce([1, 2, 3, 4], (a, b) => a + b, 0));
 	// → 10
+------------------------------------------------------------------
+[x] Using React
+
+npx create-react-app my-app
+cd my-app
+npm start
+
+//go to src, then App.js to edit
