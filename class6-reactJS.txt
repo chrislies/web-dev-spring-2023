@@ -1,6 +1,14 @@
 3-2-23
 class 6
 
+[x] Using React
+
+npx create-react-app my-app
+cd my-app
+npm start
+
+//go to src, then App.js to edit
+
 react: a lightweight framework 
 [x] always renders one page
 
