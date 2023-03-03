@@ -1,0 +1,53 @@
+3-2-23
+class 6
+
+react: a lightweight framework 
+[x] always renders one page
+
+jsx: syntax extension to js
+
+
+  // <p>hi</p>
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+
+App: component (components start with a capital letter)
+<p>hi</p>: element
+
+React apps are made out of components. A component is a piece of the UI (user interface) that has its own logic and appearance. A component can be as small as a button, or as large as an entire page.
+
+Each component should have its own file
+
+React Only Updates What’s Necessary
+React DOM compares the element and its children to the previous one, and only applies the DOM updates necessary to bring the DOM to the desired state.
+
+should only call root.render once in index.js
+-----------------------------------------------------------------------------
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+function App() {
+  return (
+    <div>
+      <Welcome name="Sara" />
+      <Welcome name="Cahal" />
+      <Welcome name="Edite" />
+    </div>
+  );
+}
+-----------------------------------------------------------------------------
+Props are Read-Only
+Whether you declare a component as a function or a class, it must never modify its own props. Consider this sum function:
+
+function sum(a, b) {
+  return a + b;
+}
+Such functions are called “pure” because they do not attempt to change their inputs, and always return the same result for the same inputs.
+
+In contrast, this function is impure because it changes its own input:
+
+function withdraw(account, amount) {
+  account.total -= amount;
+}
