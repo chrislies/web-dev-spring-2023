@@ -14,7 +14,7 @@ class 8 - promises, async/wait
 - in App.js,
 	1. import { Routes, Route } from "react-router-dom";
 	2. have <Routes></Routes> inside the App div
-	3. have <Route /> within Routes
+	3. have multiple <Route /> within Routes
 		function App() {
 		  return (
 		    <div className="App">
