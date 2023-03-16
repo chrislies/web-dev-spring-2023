@@ -1,3 +1,27 @@
 3-16-23 
 class 8 - promises, async/wait
 
+[x] installing react router dom library
+1. go in the project folder 
+2. npm install react-router-dom 
+
+- in index.js, 
+	1. import { BrowserRouter } from "react-router-dom";
+	2. surround <App /> with <BrowserRouter>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
+- in App.js,
+	1. import { Routes, Route } from "react-router-dom";
+	2. have <Routes></Routes> inside the App div
+	3. have <Route /> within Routes
+		function App() {
+		  return (
+		    <div className="App">
+		      <Routes>
+		        <Route index element={<Home />} />
+		        <Route path="about" element={<About />} />
+		      </Routes>
+		    </div>
+		  );
+		}
