@@ -1,0 +1,87 @@
+3-16-23 
+class 8 - react-router-dom, promises, async/wait
+
+[x] installing react router dom library
+1. go in the project folder 
+2. npm install react-router-dom 
+
+- in index.js, 
+	1. import { BrowserRouter } from "react-router-dom";
+	2. surround <App /> with <BrowserRouter></BrowserRouter>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
+- in App.js,
+	1. import { Routes, Route } from "react-router-dom";
+	2. have <Routes></Routes> inside the App div
+	3. have multiple <Route /> within <Routes></Routes>
+		function App() {
+		  return (
+		    <div className="App">
+		      <Routes>
+		        <Route index element={<Home />} />
+		        <Route path="about" element={<About />} />
+		      </Routes>
+		    </div>
+		  );
+		}
+	3. to use link within route elements, add "Link" to the import: 
+		- import { Routes, Route, Link } from "react-router-dom";	
+--------------------------------------------------------------------------------------------
+[x] asynchronous actions
+- actions that are initiated but finished later
+-ex: setTimeout()
+- used for downloading, network requests, etc.
+- should always have error handling for asynchronous actions
+
+- ways to handle asynchronous actions: 
+--------------------------------------------------------------------------------------------
+[x] callbacks: https://javascript.info/callbacks
+
+function loadScript(src, callback) {
+  let script = document.createElement('script');
+  script.src = src;
+  script.onload = () => callback(script);
+  document.head.append(script);
+}
+
+loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', script => {
+  alert(`Cool, the script ${script.src} is loaded`);
+  alert( _ ); // _ is a function declared in the loaded script
+});
+--------------------------------------------------------------------------------------------
+[x] Promises: https://javascript.info/promise-basics
+
+loadScript("/article/promise-chaining/one.js")
+  .then(function(script) {
+    return loadScript("/article/promise-chaining/two.js");
+  })
+  .then(function(script) {
+    return loadScript("/article/promise-chaining/three.js");
+  })
+  .then(function(script) {
+    // use functions declared in scripts
+    // to show that they indeed loaded
+    one();
+    two();
+    three();
+  });
+
+[x] promises with fetch 
+
+	fetch('/article/promise-chaining/user.json')
+  .then(response => response.json())
+  .then(user => fetch(`https://api.github.com/users/${user.name}`))
+  .then(response => response.json())
+  .then(githubUser => new Promise((resolve, reject) => {
+    let img = document.createElement('img');
+    img.src = githubUser.avatar_url;
+    img.className = "promise-avatar-example";
+    document.body.append(img);
+
+    setTimeout(() => {
+      img.remove();
+      resolve(githubUser);
+    }, 3000);
+  }))
+  .catch(error => alert(error.message));
