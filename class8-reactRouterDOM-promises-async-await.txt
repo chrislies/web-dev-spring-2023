@@ -50,7 +50,9 @@ loadScript('https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.2.0/lodash.js', s
   alert( _ ); // _ is a function declared in the loaded script
 });
 --------------------------------------------------------------------------------------------
-[x] Promises: https://javascript.info/promise-basics
+[x] Promises: 
+- https://javascript.info/promise-basics
+- https://javascript.info/promise-error-handling
 
 loadScript("/article/promise-chaining/one.js")
   .then(function(script) {
@@ -85,3 +87,13 @@ loadScript("/article/promise-chaining/one.js")
     }, 3000);
   }))
   .catch(error => alert(error.message));
+
+[x] error hadnling with promises 
+Promise chains are great at error handling. When a promise rejects, the control jumps to the closest rejection handler. That’s very convenient in practice.
+
+For instance, in the code below the URL to fetch is wrong (no such site) and .catch handles the error:
+
+fetch('https://no-such-server.blabla') // rejects
+  .then(response => response.json())
+  .catch(err => alert(err)) // TypeError: failed to fetch (the text may vary)
+

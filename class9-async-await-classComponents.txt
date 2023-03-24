@@ -1,0 +1,180 @@
+3-23-23
+class 9 - async/await, class component
+
+[x] async/await
+- new alternative way to deals with promises
+- alternative to using then
+- must be used in pairs
+
+async function f() {
+  return 1;
+}
+
+f().then(alert); // 1
+
+The word “async” before a function means one simple thing: a function always returns a promise. Other values are wrapped in a resolved promise automatically. For instance, this function returns a resolved promise with the result of 1
+
+async function f() {
+
+  let promise = new Promise((resolve, reject) => {
+    setTimeout(() => resolve("done!"), 1000)
+  });
+
+  let result = await promise; // wait until the promise resolves (*)
+
+  alert(result); // "done!"
+}
+
+f();
+----------------------------------------------
+[x] error handling with async/await
+
+async function f() {
+
+  try {
+    let response = await fetch('/no-user-here');
+    let user = await response.json();
+  } catch(err) {
+    // catches errors both in fetch and response.json
+    alert(err);
+  }
+}
+
+f();
+----------------------------------------------
+[x] Class components
+https://legacy.reactjs.org/docs/state-and-lifecycle.html
+
+Converting a Function to a Class
+You can convert a function component like Clock to a class in five steps:
+
+1. Create an ES6 class, with the same name, that extends React.Component.
+2. Add a single empty method to it called render().
+3. Move the body of the function into the render() method.
+4. Replace props with this.props in the render() body.
+5. Delete the remaining empty function declaration.
+
+class Clock extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+
+[x] adding states to class components:
+1. Replace this.props.date with this.state.date in the render() method:
+2. Add a class constructor that assigns the initial this.state:
+
+
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clock />);
+----------------------------------------------
+[x] lifecycle methods
+mount: component rendered to the DOM for the first time
+update:
+unmount: removes component from the DOM
+
+- lifecycle methods belong to the class itself, and can only be used in that class
+
+class Clock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {date: new Date()};	// initlializes this.state
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Clock />);
+
+1. When <Clock /> is passed to root.render(), React calls the constructor of the Clock component. Since Clock needs to display the current time, it initializes this.state with an object including the current time. We will later update this state.
+
+2. React then calls the Clock component’s render() method. This is how React learns what should be displayed on the screen. React then updates the DOM to match the Clock’s render output.
+
+3. When the Clock output is inserted in the DOM, React calls the componentDidMount() lifecycle method. Inside it, the Clock component asks the browser to set up a timer to call the component’s tick() method once a second.
+
+4. Every second the browser calls the tick() method. Inside it, the Clock component schedules a UI update by calling setState() with an object containing the current time. Thanks to the setState() call, React knows the state has changed, and calls the render() method again to learn what should be on the screen. This time, this.state.date in the render() method will be different, and so the render output will include the updated time. React updates the DOM accordingly.
+
+5. If the Clock component is ever removed from the DOM, React calls the componentWillUnmount() lifecycle method so the timer is stopped. 
+	- unmounts occur when components no longer appear on the DOM (conditional rendering)
+----------------------------------------------
+[x] useState
+
+Do Not Modify State Directly
+For example, this will not re-render a component:
+
+// Wrong (Does not trigger a re-render)
+this.state.comment = 'Hello';
+
+Instead, use setState():
+
+// Correct (Does trigger a re-render)
+this.setState({comment: 'Hello'});
+The only place where you can assign this.state is the constructor.
+----------------------------------------------
+// Wrong
+this.setState({
+  counter: this.state.counter + this.props.increment,
+});
+
+To fix it, use a second form of setState() that accepts a function rather than an object. That function will receive the previous state as the first argument, and the props at the time the update is applied as the second argument:
+
+// Correct
+this.setState((state, props) => ({
+  counter: state.counter + props.increment
+}));
+
+// Correct
+this.setState(function(state, props) {
+  return {
+    counter: state.counter + props.increment
+  };
+});
+----------------------------------------------
+[x] JSON
+https://jsonplaceholder.typicode.com/
