@@ -1,0 +1,34 @@
+https://docs.google.com/document/d/1UW7Q236K56WgrlUrrMcpB9MLfLsC9QlRkOjCnoiyWWk/edit
+
+[x] hooks (use) cannot be used in class components
+[x] functional components are defined by js functions (arrow, etc.)
+- to make a functional component stateful, import and use the useState hook
+
+[x] axios vs fetch
+- fetch: 
+  1) dont have to import a library to use 
+  2) do have to settle two promises to get the data
+      - one for response, another for getting the JSON data from the response
+- axios: 
+  1) we just need one promise
+
+[x] higher order functions
+- ex: 
+function repeat(n,action) {
+  for(let i = 0; i<n; i++) {
+    action(i);
+  }
+}
+repeat(5,i => console.log(i));    //0-4
+repeat(5,i => console.log(i+1));  //1-5
+
+- ex2:
+function lessThan(n) {
+  return m => m < n;    //lessThan11(6)
+}
+// how can we use the lessThan() to determine if 6 < 11?
+const lessThan11 = lessThan(11);
+console.log(lessThan11(6));
+
+[x] promises:
+  - then and catch are not the only way to handle promises (async/await)
