@@ -44,7 +44,7 @@ ex)
 	//same function w/o arrow implementation
 	function greaterThan(n) {
 	  let func = function(m) {
-		return m>n;
+			return m>n;
 	  }
 	  return func;
 	}
