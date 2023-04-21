@@ -1,0 +1,39 @@
+4-20-23
+class 11 - redux, redux-thunk
+
+[x] redux: 
+	- https://drive.google.com/file/d/1T4kvykmcM2MvKvnExjopJv2i4cOjZw1O/view
+	- https://drive.google.com/file/d/1CWDPOigoVDwZDc4iLEpJMJ7MN42cT3qI/view
+
+[x] redux-thunk: 
+	- handles asynchronous actions
+	- thunk middleware
+		- checks the incoming action
+			- if action is a reg. object, do nothing
+			- if action is a function, invoke it, and pass the store's dispatch and getState methods to it
+[x] WHY THUNK?
+* Helps you stay DRY
+	- Several different components might want to make the same API requests.
+* Removes “responsibility” for asynchronous code/side effects from components
+	- Components don’t need to know whether an action is async or not - they just dispatch!
+
+// the "action type”
+const GET_PUGS = 'GET_PUGS'
+
+// the "action creator"
+const gotPugs = (pugs) => {
+// the "action"
+return {
+	type: GET_PUGS,
+	pugs
+	}
+}
+
+// the "thunk creator"
+const getPugs = () => {
+// the "thunk"
+return async (dispatch, getState) => {
+	const {data} = await axios.get('/api/pugs')
+	dispatch(gotPugs(data))
+	}
+}
