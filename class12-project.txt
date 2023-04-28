@@ -1,0 +1,31 @@
+...state //copies state array
+
+thunk manages an asynchronous action (ex. network request)
+
+frontend: requests; requests are sent from thunks
+backend: response; not a react app; node (server using express)
+	- use sequalize
+- both ends should run independently from each other
+
+
+actionType->actionCreator
+actionType->actionThunk
+
+adding a new action:
+	- new actionCreator
+	- new actionThunk
+	- new reducer (How we will access state in the components)
+
+thunks use the actionCreators
+thunks are where we make API calls
+
+dispatch sends requests to reducer
+
+--------------------------------------------------
+postgreSQL
+-pg admin
+-pass: chris
+-port 5432
+
+postman
+- tests our backend
